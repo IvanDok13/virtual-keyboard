@@ -10,48 +10,37 @@ const keyboard = [
 //     console.log(keyboard);
 // }   
 
+let body = document.querySelector('body');
 
-/* <input onkeypress="javascript:return false;" id="txtChar" onkeydown="javascript:return displayKeyCode(event)" type="text" name="txtChar"></input> */
+//Создаем область для текста start
 
-/* <textarea class="body--textarea textarea" id="textarea" rows="5" cols="50"></textarea> */
+const textArea = document.createElement('input');
+textArea.className = 'text-area';
+textArea.type = 'text';
+body.appendChild(textArea);
+//Создаем область для текста end
 
-// let textarea = document.createElement('textarea');
-// textarea.type = 'text';
-// textarea.rows = 5;
-// textarea.cols = 50;
-// document.body.appendChild(textarea);
+//Создаю клавиатуру start
 
-document.body.onload = addElement;
-let my_div = newDiv = null;
-function addElement() {
+let keys = document.createElement('div'); //Wrapper
+keys.className = 'keys'; 
 
-    // Создаём новый элемент div
-    // и добавляем в него немного контента
-
-    let newDiv = document.createElement("div");
-        newDiv.innerHTML = '<textarea class="body__textarea textarea" id="textarea" rows="5" cols="50"></textarea>';
-
-    // Добавляем только что созданный элемент в дерево DOM
-
-    my_div = document.getElementById("key-char-code");
-    document.body.insertBefore(newDiv, my_div);
-  }
-
-// document.querySelector('body').innerHTML = '<h1>Hello!</h1>';
-
-function initKey() {
+let initKey = () => {
     let out = '';
     for (let i = 0; i < keyboard.length; i++) {
-        if (i === 12 || i == 24) {
-            out += '<div class="clearFix"></div>'
+        if (i === 13 || i == 27 || i === 40 || i === 52 || i === 64) {
+            out += '<div class="row"></div>'
         }
         out += '<div id="key-char-code" class="key-char-code" data="' + keyboard[i] + '">' + String.fromCharCode(keyboard[i]) + '</div>';
     }
-    document.querySelector('body').innerHTML = out;
+    keys.innerHTML = out;
 }
 
 initKey();
 
+body.appendChild(keys);
+
+//Создаю клавиатуру end
 
 
 document.onkeypress = function (event) {
@@ -72,3 +61,4 @@ document.querySelectorAll('.key-char-code').forEach(function (element) {
         this.classList.add('active');
     }
 });
+
