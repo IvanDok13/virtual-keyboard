@@ -62,3 +62,9 @@ document.querySelectorAll('.key-char-code').forEach(function (element) {
     }
 });
 
+
+
+const comment = document.createElement('h1');
+comment.className = 'text-area';
+comment.innerText = 'Переключение не реализовано'
+body.appendChild(comment);
