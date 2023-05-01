@@ -1,0 +1,23 @@
+.key-char-code {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    float: left;
+    transition: .2s;
+}
+
+.clearFix {
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+.active {
+    background: paleturquoise;
+    transition: .5ms;
+}
